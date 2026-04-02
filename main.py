@@ -34,7 +34,7 @@ class CXPlugin(Star):
 
     # ✅ 正确生命周期启动
     @filter.on_astrbot_loaded()
-    async def on_loaded(self, event):
+    async def on_loaded(self):
         logger.info("CX插件启动")
         self.session = aiohttp.ClientSession()
         self.cookie = self.load_cookie()
