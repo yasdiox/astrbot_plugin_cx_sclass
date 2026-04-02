@@ -1,0 +1,7 @@
+{
+    "subscribers": {
+      "type": "list",
+      "description": "订阅的群/用户ID列表",
+      "default": []
+    }
+  }

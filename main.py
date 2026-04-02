@@ -169,21 +169,6 @@ class CXPlugin(Star):
 
             await asyncio.sleep(self.interval)
 
-    # ===== 指令 =====
-    @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("订阅活动")
-    async def sub(self, event: AstrMessageEvent):
-        self.subscribers.add(event.unified_msg_origin)
-        message_chain = MessageChain().message("已订阅")
-        await self.context.send_message(event.unified_msg_origin, message_chain)
-    
-    @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("取消订阅")
-    async def unsub(self, event: AstrMessageEvent):
-        self.subscribers.discard(event.unified_msg_origin)
-        message_chain = MessageChain().message("已取消订阅")
-        await self.context.send_message(event.unified_msg_origin, message_chain)
-
     # ===== 测试指令 =====
     @filter.permission_type(filter.PermissionType.ADMIN)
     @filter.command("测试检测")
