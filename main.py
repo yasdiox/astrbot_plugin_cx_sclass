@@ -199,12 +199,18 @@ class CXPlugin(Star):
         uid = event.unified_msg_origin
         subs = self.config.get("subscribers", [])
 
-        if uid not in subs:
+        if uid in subs:
+            msg = "⚠️ 已经订阅过了"
+        else:
             subs.append(uid)
             self.config["subscribers"] = subs
             self.config.save_config()
+            msg = "✅ 订阅成功"
 
-        await self.context.send_message(uid, MessageChain().message("✅ 已订阅"))
+        await self.context.send_message(
+            uid,
+            MessageChain().message(msg)
+        )
 
     @filter.command("取消订阅")
     async def unsub(self, event: AstrMessageEvent):
@@ -215,8 +221,11 @@ class CXPlugin(Star):
             subs.remove(uid)
             self.config["subscribers"] = subs
             self.config.save_config()
+            msg = "✅ 已取消订阅"
+        elif uid not in subs:
+            msg = "⚠️ 你还没订阅"
 
-        await self.context.send_message(uid, MessageChain().message("❌ 已取消订阅"))
+        await self.context.send_message(uid, MessageChain().message(msg))
 
     # ================= 测试 =================
 

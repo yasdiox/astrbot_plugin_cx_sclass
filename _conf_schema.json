@@ -1,7 +1,17 @@
 {
-    "subscribers": {
-      "type": "list",
-      "description": "订阅的群/用户ID列表",
-      "default": []
-    }
+  "check_interval": {
+    "type": "integer",
+    "description": "轮询间隔（秒）",
+    "default": 10
+  },
+  "refresh_interval": {
+    "type": "integer",
+    "description": "Cookie刷新间隔（秒）",
+    "default": 21600
+  },
+  "subscribers": {
+    "type": "list",
+    "description": "订阅的群/用户",
+    "default": []
   }
+}
