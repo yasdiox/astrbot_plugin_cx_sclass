@@ -1,11 +1,11 @@
 {
   "check_interval": {
-    "type": "integer",
+    "type": "int",
     "description": "轮询间隔（秒）",
     "default": 10
   },
   "refresh_interval": {
-    "type": "integer",
+    "type": "int",
     "description": "Cookie刷新间隔（秒）",
     "default": 21600
   },
